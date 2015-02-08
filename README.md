@@ -27,7 +27,7 @@ java SDRecord minutes_to_record source_port dest_host dest_port [buff_size]
 ***Options:***
 
 ```
-1 - An integer with the number of minutes to record to (ideal). 0 for no limit
+1 - An integer with the number of minutes to record (ideal). 0 for no limit
 2 - An integer between 1024-65535. This is the port used by Gqrx to send to UDP packets. Default 7355
 3 - IP or hostname of the destination host. Ex: localhost
 4 - An integer between 1024-65535. This is the port used by the destination host to receive filtered UPD packets
