@@ -3,7 +3,7 @@ SDRecord
 
 Tool for conversations recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx
 
-It also can be used by others SDR software that send UDP packets with streaming audio over the internet.
+It also can be used with others SDR software that send UDP packets with streaming audio over the internet.
 
 Indeed this software does not record directly, but acts like a filter to use in couple with nc (netcat).
 This filter blocks UDP packets coming from Gqrx that do not contain any relevant data and dispatches to a specific host, choosen by the user, only packets containing info. 
