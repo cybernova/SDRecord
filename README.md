@@ -1,7 +1,7 @@
 SDRecord
 ====
 
-Tool for conversations recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx
+Tool for audio recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx
 
 It also can be used with others SDR software that send UDP packets with streaming audio over the internet.
 
@@ -11,8 +11,8 @@ This filter blocks UDP packets coming from Gqrx that do not contain any relevant
 Preamble
 --------
 
-Gqrx has an internal function for conversations recording but it records even if none is transmitting anything, with the effect of consuming a lot of disk space for junk data. 
-Another bad effect is the difficulty to follow a conversation when you have junk data (mute segments) between talked segments in the registration.
+Gqrx has an internal function for audio recording but it records even if none is transmitting anything, with the effect of consuming a lot of disk space for junk data. 
+Another bad effect is the difficulty to follow a conversation when you have junk data (silence segments) between talked segments in the record.
 
 Usage and Options
 -----------------
@@ -27,12 +27,12 @@ java SDRecord minutes_to_record source_port dest_host dest_port [buff_size]
 ***Options:***
 
 ```
-1 - An integer with the number of minutes to record (ideal). 0 for no limit
-2 - An integer between 1024-65535. This is the port used by Gqrx to send to UDP packets. Default 7355
+1 - An integer as number of minutes to record (ideal). 0 for no limit
+2 - An integer between 1024-65535. This is the port used by Gqrx where to send UDP packets. Default 7355
 3 - IP or hostname of the destination host. Ex: localhost
-4 - An integer between 1024-65535. This is the port used by the destination host to receive filtered UPD packets
+4 - An integer between 1024-65535. This is the port used by the destination host for receive filtered UDP packets
 Optional:
-5 - An integer with the size of bytes of the buffer. Should be as big as the MAX size of UDP packets sended by Gqrx. With no values the default is 1500 bytes
+5 - An integer as size in bytes of the buffer. Should be as big as the MAX size of UDP packets sended by Gqrx. With no value the default is 1500 bytes
 ```
 
 Putting all together
