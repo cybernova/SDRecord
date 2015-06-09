@@ -44,7 +44,7 @@ Putting all together
 
 3) In a terminal window, launch the filter: ```java SDRecord OPTIONS```
 
-4) In another terminal window (in case of using localhost), launch netcat for recording: ```nc -l -u DESTPORT > audiofile``` 
+4) In another terminal window (in case of using localhost), launch netcat for recording: ```nc -lup DESTPORT > audiofile``` 
 
 5) You can listen the recorded conversations with a line of code like this: ``` aplay -r 48k -f S16_LE -t raw -c 1 < audiofile```
 
