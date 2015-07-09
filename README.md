@@ -3,16 +3,17 @@ SDRecord
 
 Tool for audio recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx
 
-It also can be used with others SDR software that send UDP packets with streaming audio over the internet.
+It can also be used with others SDR software that send packets with streaming audio over UDP.
 
-Indeed this software does not record directly, but acts like a filter to use in couple with nc (netcat).
-This filter blocks UDP packets coming from Gqrx that do not contain any relevant data and dispatches to a specific host, choosen by the user, only packets containing info. 
+Indeed this software does not record directly, but acts like a filter to use in couple with nc (netcat) or similar.
+This filter drops UDP packets coming from Gqrx that do not contain any relevant data ( data payload is all 0) and forwards to a specific host, choosen by the user, only packets containing info.
+
+Thus this filter is able to reduce network traffic and the disk space needed for records.
 
 Preamble
 --------
 
-Gqrx has an internal function for audio recording but it records even if none is transmitting anything, with the effect of consuming a lot of disk space for junk data. 
-Another bad effect is the difficulty to follow a conversation when you have junk data (silence segments) between talked segments in the record.
+Gqrx has an internal function for audio recording but it records even if there is no signal in input, with the effect of consuming a lot of disk space for junk data. 
 
 Usage and Options
 -----------------
@@ -59,7 +60,7 @@ andrea@Workstation:~/Desktop$ java SDRecord 0 7355 localhost 7356
 
 * GNU/Linux
 
-If you have successfully tested this script on others systems or platforms please let me know.
+If you have successfully tested this software on others systems or platforms please let me know.
 
 License and Donations
 -------
