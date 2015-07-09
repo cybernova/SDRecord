@@ -5,7 +5,7 @@
 //# Tool for audio recording with SDR. Please visit the project's website at: https://github.com/cybernova/SDRecord
 //# Copyright (C) 2015 Andrea 'cybernova' Dari (andreadari91@gmail.com)                                   
 //#                                                                                                       
-//# This shell script is free software: you can redistribute it and/or modify                             
+//# This software is free software: you can redistribute it and/or modify                             
 //# it under the terms of the GNU General Public License as published by                                   
 //# the Free Software Foundation, either version 2 of the License, or                                     
 //# any later version.                                                                   
