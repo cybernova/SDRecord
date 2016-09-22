@@ -64,11 +64,6 @@ andrea@Workstation:~/Downloads/SDRecord-master$ java SDRecord -m 30 -s 50 -r 192
 Listening /0.0.0.0 on port 7355
 345.9 KB transferred	 Press Ctrl+c to terminate
 ```
-## Tested Environments
-
-* GNU/Linux
-
-If you have successfully tested this software on others systems or platforms please let me know.
 
 License and Donations
 -------
