@@ -29,6 +29,7 @@ usage: java SDRecord
  -p <arg>   Local port to use, default is 7355
  -r <arg>   Remote address where to send data
  -s <arg>   Stop recording when reaching specified MBs
+ -sf        Split recording file on each squelch (used with -f option, every filename will be timestamped).
 
 ```
 **NOTE: When is not specified an output file or a remote host, data is written on stdout.**
@@ -43,6 +44,10 @@ Putting all together
 3) In a terminal window, launch SDRecord: ```andrea@Workstation:~/Downloads/SDRecord-master$java SDRecord OPTIONS```
 
 4) You can listen the recorded conversations with a line of code like this: ``` aplay -r 48k -f S16_LE -t raw -c 1 < audiofile```
+
+## Splitting recording into different files
+
+It is useful to have all recorded session in each own different file. Using the -sf option will split sessions and timestamp the files. A new file is created after 3 seconds of silence. Raw audio can be encoded with lame, mencoder, ffmpeg or similar tool. See the provided script encode.sh for example how to mass encode all raw files with lame.
 
 ## Examples
 
