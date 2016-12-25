@@ -28,6 +28,8 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.commons.cli.*;
 
@@ -36,12 +38,14 @@ public class SDRecord {
 	public static void main(String[] args)  {
 		
 		boolean recordToInf = false;
-		long recordTo = 0, txsize = 0, wr = 0, max = 0;
+		long recordTo = 0, txsize = 0, wr = 0, max = 0, tsLastReceived = 0, tsNow = 0;
 		int sourcePort = 0, destPort = 0;
-		String val;
+		String val, sNewFilename;
 		OutputStream writer = null;
 		InetAddress rhost = null, lhost = null;
 		DatagramSocket socket = null;
+		Date now = null;
+		SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd__HH_mm_ss");
 		
 		//Default values
 		int buffSize = 1500;
@@ -59,6 +63,7 @@ public class SDRecord {
 		options.addOption("d", true, "Remote port, to use with -r option");
 		options.addOption("f", true, "Output file where to save the recording");
 		options.addOption("s", true, "Stop recording when reaching specified MBs");
+		options.addOption("sf", false, "Split recording file on each squelch (used with -f option, every filename will be timestamped)");
 		options.addOption("h", false, "Help");
 		
 		CommandLineParser parser = new DefaultParser();
@@ -167,10 +172,21 @@ public class SDRecord {
 			if (basicFilter(packet) == null)
 				continue;
 			
+			
 			if (writer == null && rhost == null)
 				wr = recordToStdout(packet);
-			if (writer != null) 
+			if (writer != null) {
+				tsNow = System.currentTimeMillis();
+				if (cmd.hasOption("sf") && tsNow - tsLastReceived > 3000){
+					now = new Date();
+					sNewFilename = df.format(now);
+					System.err.print("\n\r Starting new file: "+sNewFilename+"\n");
+					try { writer = new FileOutputStream(sNewFilename); }
+					catch (FileNotFoundException e ) { System.err.println("ERROR!: File not found"); System.exit(3); }
+				}
 				wr = recordToFile(packet, writer);
+				tsLastReceived = tsNow;
+			}
 			if (rhost != null)
 				wr = recordToSocket(packet, socket, rhost, destPort);
 			
