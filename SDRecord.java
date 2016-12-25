@@ -175,11 +175,13 @@ public class SDRecord {
 			
 			if (writer == null && rhost == null)
 				wr = recordToStdout(packet);
-			if (writer != null) {
+			if (writer != null) 
+			{
 				tsNow = System.currentTimeMillis();
-				if (cmd.hasOption("sf") && tsNow - tsLastReceived > 3000){
+				if (cmd.hasOption("sf") && tsNow - tsLastReceived > 3000)
+				{
 					now = new Date();
-					sNewFilename = df.format(now);
+					sNewFilename = df.format(now)+".raw";
 					System.err.print("\n\r Starting new file: "+sNewFilename+"\n");
 					try { writer = new FileOutputStream(sNewFilename); }
 					catch (FileNotFoundException e ) { System.err.println("ERROR!: File not found"); System.exit(3); }
