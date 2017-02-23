@@ -1,7 +1,7 @@
 SDRecord
 ====
 
-Tool for audio recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx or gqrx.dk
+Tool for audio recording with SDR, tested to work with Gqrx: https://github.com/csete/gqrx or http://gqrx.dk
 
 **SDRecord is able to reduce network traffic, disk space needed for records and in plus can record for X specified minutes and/or for X specified MBs of data.**
 
@@ -44,7 +44,9 @@ Gqrx audio spec
 The streamed audio has the following specifications:
 
 Channels: 1 (left)
+
 Sample rate: 48 kHz
+
 Sample format: 16 bit signed, little endian (S16LE)
 
 ## Examples
