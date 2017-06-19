@@ -2,7 +2,7 @@
 //#LICENSE                                                   
 //########
 
-//# Tool for audio recording with SDR v1.0.2 Please visit the project's website at: https://github.com/cybernova/SDRecord
+//# Tool for audio recording with SDR v1.0.2b Please visit the project's website at: https://github.com/cybernova/SDRecord
 //# Copyright (C) 2017 Andrea Dari (andreadari91@gmail.com)                                   
 //#                                                                                                       
 //# This shell script is free software: you can redistribute it and/or modify                             
@@ -35,7 +35,7 @@ public class SDRecord {
 	
 	public static void main(String[] args)  {
 		
-		final String version = "SDRecord v1.0.2 Copyright (C) 2017 Andrea Dari (andreadari91@gmail.com)";
+		final String version = "SDRecord v1.0.2b Copyright (C) 2017 Andrea Dari (andreadari91@gmail.com)";
 		boolean recordToInf = false;
 		long recordTo = 0, txsize = 0, wr = 0, secremain = 0,max = 0;
 		int sourcePort = 0, destPort = 0;
@@ -203,18 +203,25 @@ public class SDRecord {
 				System.err.print("\n\t\t\t Press Ctrl+c to terminate");
 				System.out.print("\033[2A");
 			}
-			else
+			else if ( max == 0 && recordToInf == false)
+			{
+				System.out.print("\n");
+				System.err.print("\r"+formatSize(txsize)+" transferred"+"\033[K");
+				System.err.print("\n\t\t\t Press Ctrl+c to terminate");
+				System.out.print("\033[2A");
+			}
+			else if ( max == 0 && recordToInf == true)
 			{
 			System.err.print("\r"+formatSize(txsize)+" transferred"+"\033[K");
 			System.err.print("\n\t\t\t Press Ctrl+c to terminate");
 			System.out.print("\033[1A");
 			}
 		}
-		System.err.print("\r"+formatSize(txsize)+" transferred"+"\033[K");
+		//System.err.print("\r"+formatSize(txsize)+" transferred"+"\033[K");
 		socket.close();
 		if (writer != null)
 			try { writer.close(); } catch (IOException e) { e.printStackTrace(); }
-		System.out.print("\n\033[K\n\033[K");
+		System.out.print("\n\n\033[K\n\033[K");
 		System.exit(0);
 	}
 	

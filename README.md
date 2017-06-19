@@ -57,7 +57,7 @@ andrea@Workstation:~/Downloads/SDRecord-master$ java SDRecord -f audiofile
 Listening /0.0.0.0 on port 7355
 345.9 KB transferred	 Press Ctrl+c to terminate
 ```
-Recording in a file and sending data to a remote host:
+Recording in a file and sending data to a remote host for a max of 10 MB:
 ```bash
 andrea@Workstation:~/Downloads/SDRecord-master$ java SDRecord -s 10 -f audiofile -r 192.168.1.105 -d 7356
 Listening /0.0.0.0 on port 7355
