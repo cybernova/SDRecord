@@ -44,7 +44,7 @@ Putting all together
 
 2) Unzip the repository and compile the java code: ```andrea@Workstation:~/Downloads/SDRecord-master$javac SDRecord.java```
 
-3) Launch Gqrx enabling stream audio over UDP (default port 7355)
+3) Launch Gqrx enabling stream audio over UDP (default port 7355) and using the squelch feature to eliminate noise
 
 4) In a terminal window, execute SDRecord: ```andrea@Workstation:~/Downloads/SDRecord-master$java SDRecord [options]```
 
