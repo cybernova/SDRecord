@@ -35,14 +35,14 @@ import java.util.Properties;
  * Additionally, any left-over or unrecognized arguments,
  * are available for further processing.
  *
- * @version $Id: CommandLine.java 1444365 2013-02-09 14:21:27Z tn $
+ * @version $Id: CommandLine.java 1786144 2017-03-09 11:34:57Z britter $
  */
 public class CommandLine implements Serializable
 {
     /** The serial version UID. */
     private static final long serialVersionUID = 1L;
 
-    /** the unrecognised options/arguments */
+    /** the unrecognized options/arguments */
     private final List<String> args = new LinkedList<String>();
 
     /** the processed options */
@@ -334,7 +334,7 @@ public class CommandLine implements Serializable
     /**
      * Add left-over unrecognized option/argument.
      *
-     * @param arg the unrecognised option/argument.
+     * @param arg the unrecognized option/argument.
      */
     protected void addArg(String arg)
     {
@@ -376,5 +376,50 @@ public class CommandLine implements Serializable
 
         // return the array
         return processed.toArray(optionsArray);
+    }
+
+    /**
+     * A nested builder class to create <code>CommandLine</code> instance
+     * using descriptive methods.
+     * 
+     * @since 1.4
+     */
+    public static final class Builder
+    {
+        /**
+         * CommandLine that is being build by this Builder.
+         */
+        private final CommandLine commandLine = new CommandLine();
+
+        /**
+         * Add an option to the command line. The values of the option are stored.
+         *
+         * @param opt the processed option
+         *
+         * @return this Builder instance for method chaining.
+         */
+        public Builder addOption(Option opt)
+        {
+            commandLine.addOption(opt);
+            return this;
+        }
+
+        /**
+         * Add left-over unrecognized option/argument.
+         *
+         * @param arg the unrecognized option/argument.
+         *
+         * @return this Builder instance for method chaining.
+         */
+        public Builder addArg(String arg)
+        {
+            commandLine.addArg(arg);
+            return this;
+        }
+
+        public CommandLine build()
+        {
+            return commandLine;
+        }
     }
 }

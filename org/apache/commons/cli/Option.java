@@ -37,7 +37,7 @@ import java.util.List;
  * @see org.apache.commons.cli.Options
  * @see org.apache.commons.cli.CommandLine
  *
- * @version $Id: Option.java 1677406 2015-05-03 14:27:31Z britter $
+ * @version $Id: Option.java 1756753 2016-08-18 10:18:43Z britter $
  */
 public class Option implements Cloneable, Serializable
 {
@@ -415,8 +415,17 @@ public class Option implements Cloneable, Serializable
 
     /** 
      * Returns the number of argument values this Option can take.
+     * 
+     * <p>
+     * A value equal to the constant {@link #UNINITIALIZED} (= -1) indicates
+     * the number of arguments has not been specified.
+     * A value equal to the constant {@link #UNLIMITED_VALUES} (= -2) indicates
+     * that this options takes an unlimited amount of values.
+     * </p>
      *
      * @return num the number of argument values
+     * @see #UNINITIALIZED
+     * @see #UNLIMITED_VALUES
      */
     public int getArgs()
     {

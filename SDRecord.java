@@ -2,10 +2,10 @@
 //#LICENSE                                                   
 //########
 
-//# Tool for audio recording with SDR v1.0.2c Please visit the project's website at: https://github.com/cybernova/SDRecord
-//# Copyright (C) 2017 Andrea Dari (andreadari91@gmail.com)                                   
+//# Tool for audio recording with a SDR v1.0.4 Please visit the project's website at: https://github.com/cybernova/SDRecord
+//# Copyright (C) 2016-2018 Andrea Dari (andreadari91@gmail.com)                                   
 //#                                                                                                       
-//# This shell script is free software: you can redistribute it and/or modify                             
+//# This tool is free software: you can redistribute it and/or modify                             
 //# it under the terms of the GNU General Public License as published by                                   
 //# the Free Software Foundation, either version 2 of the License, or                                     
 //# any later version.                                                                   
@@ -40,7 +40,7 @@ public class SDRecord {
 	
 	public static void main(String[] args)  {
 		
-		final String version = "SDRecord v1.0.2c Copyright (C) 2017 Andrea Dari (andreadari91@gmail.com)";
+		final String version = "SDRecord v1.0.4 Copyright (C) 2016-2018 Andrea Dari (andreadari91@gmail.com)";
 		boolean recordToInf = false;
 		long recordTo = 0, txsize = 0, wr = 0, secremain = 0, max = 0;
 		int sourcePort = 0, destPort = 0;
@@ -155,8 +155,8 @@ public class SDRecord {
 			socket.setReuseAddress(true);
 		} catch (SocketException e) { System.err.println(red+"ERROR:"+rcolor+" error in creating the socket"); System.exit(3); }
 		
-		//handling SIGINT (ctrl+c) to clear the screen
-		Runtime.getRuntime().addShutdownHook(new Thread() { public void run() { System.err.print("\033[f\033[2J"); } });
+		//handling SIGINT (ctrl+c)
+		Runtime.getRuntime().addShutdownHook(new Thread() { public void run() { System.err.print("\n\n\033[K\n\033[K"); } });
 		
 		byte[] buffer = new byte[buffSize];			
 		DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
@@ -220,11 +220,9 @@ public class SDRecord {
 			System.err.print("\033[1A");
 			}
 		}
-
 		socket.close();
 		if (writer != null)
 			try { writer.close(); } catch (IOException e) { System.err.println(red+"ERROR:"+rcolor+" error in closing output file");}
-		System.err.print("\n\n\033[K\n\033[K");
 		System.exit(0);
 	}
 	

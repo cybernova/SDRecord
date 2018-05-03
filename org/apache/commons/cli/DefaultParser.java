@@ -25,7 +25,7 @@ import java.util.Properties;
 /**
  * Default parser.
  * 
- * @version $Id: DefaultParser.java 1677454 2015-05-03 17:13:54Z ggregory $
+ * @version $Id: DefaultParser.java 1783175 2017-02-16 07:52:05Z britter $
  * @since 1.3
  */
 public class DefaultParser implements CommandLineParser
@@ -299,7 +299,20 @@ public class DefaultParser implements CommandLineParser
     private boolean isShortOption(String token)
     {
         // short options (-S, -SV, -S=V, -SV1=V2, -S1S2)
-        return token.startsWith("-") && token.length() >= 2 && options.hasShortOption(token.substring(1, 2));
+        if (!token.startsWith("-") || token.length() == 1)
+        {
+            return false;
+        }
+
+        // remove leading "-" and "=value"
+        int pos = token.indexOf("=");
+        String optName = pos == -1 ? token.substring(1) : token.substring(1, pos);
+        if (options.hasShortOption(optName))
+        {
+            return true;
+        }
+        // check for several concatenated short options
+        return optName.length() > 0 && options.hasShortOption(String.valueOf(optName.charAt(0)));
     }
 
     /**
@@ -646,7 +659,7 @@ public class DefaultParser implements CommandLineParser
      *
      * <ul>
      *  <li>ignore the first character ("<b>-</b>")</li>
-     *  <li>foreach remaining character check if an {@link Option}
+     *  <li>for each remaining character check if an {@link Option}
      *  exists with that id.</li>
      *  <li>if an {@link Option} does exist then add that character
      *  prepended with "<b>-</b>" to the list of processed tokens.</li>

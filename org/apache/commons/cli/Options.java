@@ -21,7 +21,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -39,7 +38,7 @@ import java.util.Map;
  *
  * @see org.apache.commons.cli.CommandLine
  *
- * @version $Id: Options.java 1685376 2015-06-14 09:51:59Z britter $
+ * @version $Id: Options.java 1754332 2016-07-27 18:47:57Z britter $
  */
 public class Options implements Serializable
 {
@@ -58,7 +57,7 @@ public class Options implements Serializable
     private final List<Object> requiredOpts = new ArrayList<Object>();
 
     /** a map of the option groups */
-    private final Map<String, OptionGroup> optionGroups = new HashMap<String, OptionGroup>();
+    private final Map<String, OptionGroup> optionGroups = new LinkedHashMap<String, OptionGroup>();
 
     /**
      * Add the specified option group.
@@ -99,7 +98,10 @@ public class Options implements Serializable
 
     /**
      * Add an option that only contains a short name.
+     * 
+     * <p>
      * The option does not take an argument.
+     * </p>
      *
      * @param opt Short single-character name of the option.
      * @param description Self-documenting description
@@ -114,7 +116,10 @@ public class Options implements Serializable
 
     /**
      * Add an option that only contains a short-name.
+     *
+     * <p>
      * It may be specified as requiring an argument.
+     * </p>
      *
      * @param opt Short single-character name of the option.
      * @param hasArg flag signally if an argument is required after this option
@@ -129,7 +134,10 @@ public class Options implements Serializable
 
     /**
      * Add an option that contains a short-name and a long-name.
+     *
+     * <p>
      * It may be specified as requiring an argument.
+     * </p>
      *
      * @param opt Short single-character name of the option.
      * @param longOpt Long multi-character name of the option.
@@ -140,6 +148,36 @@ public class Options implements Serializable
     public Options addOption(String opt, String longOpt, boolean hasArg, String description)
     {
         addOption(new Option(opt, longOpt, hasArg, description));
+        return this;
+    }
+
+    /**
+     * Add an option that contains a short-name and a long-name.
+     * 
+     * <p>
+     * The added option is set as required. It may be specified as requiring an argument. This method is a shortcut for:
+     * </p>
+     *
+     * <pre>
+     * <code>
+     * Options option = new Option(opt, longOpt, hasArg, description);
+     * option.setRequired(true);
+     * options.add(option);
+     * </code>
+     * </pre>
+     *
+     * @param opt Short single-character name of the option.
+     * @param longOpt Long multi-character name of the option.
+     * @param hasArg flag signally if an argument is required after this option
+     * @param description Self-documenting description
+     * @return the resulting Options instance
+     * @since 1.4
+     */
+    public Options addRequiredOption(String opt, String longOpt, boolean hasArg, String description)
+    {
+        Option option = new Option(opt, longOpt, hasArg, description);
+        option.setRequired(true);
+        addOption(option);
         return this;
     }
 
@@ -206,7 +244,10 @@ public class Options implements Serializable
 
     /**
      * Retrieve the {@link Option} matching the long or short name specified.
+     *
+     * <p>
      * The leading hyphens in the name are ignored (up to 2).
+     * </p>
      *
      * @param opt short or long name of the {@link Option}
      * @return the option represented by opt
@@ -296,10 +337,9 @@ public class Options implements Serializable
 
     /**
      * Returns the OptionGroup the <code>opt</code> belongs to.
-     * @param opt the option whose OptionGroup is being queried.
      *
-     * @return the OptionGroup if <code>opt</code> is part
-     * of an OptionGroup, otherwise return null
+     * @param opt the option whose OptionGroup is being queried.
+     * @return the OptionGroup if <code>opt</code> is part of an OptionGroup, otherwise return null
      */
     public OptionGroup getOptionGroup(Option opt)
     {

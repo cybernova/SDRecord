@@ -26,7 +26,7 @@ import java.util.List;
  * The class PosixParser provides an implementation of the
  * {@link Parser#flatten(Options,String[],boolean) flatten} method.
  *
- * @version $Id: PosixParser.java 1677451 2015-05-03 17:09:29Z ggregory $
+ * @version $Id: PosixParser.java 1783175 2017-02-16 07:52:05Z britter $
  * @deprecated since 1.3, use the {@link DefaultParser} instead
  */
 @Deprecated
@@ -241,7 +241,7 @@ public class PosixParser extends Parser
      *
      * <ul>
      *  <li>ignore the first character ("<b>-</b>")</li>
-     *  <li>foreach remaining character check if an {@link Option}
+     *  <li>for each remaining character check if an {@link Option}
      *  exists with that id.</li>
      *  <li>if an {@link Option} does exist then add that character
      *  prepended with "<b>-</b>" to the list of processed tokens.</li>

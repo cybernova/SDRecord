@@ -27,7 +27,7 @@ import java.util.Properties;
 /**
  * <code>Parser</code> creates {@link CommandLine}s.
  *
- * @version $Id: Parser.java 1677406 2015-05-03 14:27:31Z britter $
+ * @version $Id: Parser.java 1744812 2016-05-20 23:36:20Z ggregory $
  * @deprecated since 1.3, the two-pass parsing with the flatten method is not enough flexible to handle complex cases
  */
 @Deprecated
@@ -377,7 +377,7 @@ public abstract class Parser implements CommandLineParser
     {
         boolean hasOption = getOptions().hasOption(arg);
 
-        // if there is no option throw an UnrecognisedOptionException
+        // if there is no option throw an UnrecognizedOptionException
         if (!hasOption)
         {
             throw new UnrecognizedOptionException("Unrecognized option: " + arg, arg);

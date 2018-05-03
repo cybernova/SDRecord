@@ -19,14 +19,14 @@ package org.apache.commons.cli;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * A group of mutually exclusive options.
  *
- * @version $Id: OptionGroup.java 1669814 2015-03-28 18:09:26Z britter $
+ * @version $Id: OptionGroup.java 1749596 2016-06-21 20:27:06Z britter $
  */
 public class OptionGroup implements Serializable
 {
@@ -34,7 +34,7 @@ public class OptionGroup implements Serializable
     private static final long serialVersionUID = 1L;
     
     /** hold the options */
-    private final Map<String, Option> optionMap = new HashMap<String, Option>();
+    private final Map<String, Option> optionMap = new LinkedHashMap<String, Option>();
 
     /** the name of the selected option */
     private String selected;
