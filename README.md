@@ -48,7 +48,7 @@ Putting all together
 
 4) In a terminal window, execute SDRecord: ```andrea@Workstation:~/Downloads/SDRecord-master$java SDRecord [options]```
 
-Gqrx audio spec
+Audio spec from Gqrx
 ---------------
 
 The streamed audio has the following specifications:
@@ -61,7 +61,7 @@ Sample format: 16 bit signed, little endian (S16LE)
 
 ## Examples
 
-Recording in a file:
+Recording in a file with no limit:
 ```bash
 andrea@Workstation:~/Downloads/SDRecord-master$ java SDRecord -f audiofile
 INFO: Listening /0.0.0.0 on port 7355
@@ -86,6 +86,4 @@ License and Donations
 
 Coded by Andrea Dari and licensed under GNU GPL v2.0
 
-If you have found this tool useful I gladly accept donations, also symbolic through Paypal:
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andreadari91%40gmail%2ecom&lc=IT&item_name=Andrea%20Dari%20IT%20independent%20researcher&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="[paypal]" /></a> or Bitcoin: 1B2KqKm4CgzRfSsXv7VmbmXD9XNQzzLaTW
+Support me for updates and new projects: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andreadari91%40gmail%2ecom&lc=IT&item_name=Andrea%20Dari%20FOSS%20developer%20support&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="[paypal]" /></a> Thanks!
