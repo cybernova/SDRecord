@@ -4,11 +4,11 @@ SDRecord
 <a href="https://i.imgur.com/ZI1Ort7.png?1"><img src="https://i.imgur.com/ZI1Ort7.png?1" /></a>
 
 
-Tool for audio recording with SDR, tested to work with Gqrx: http://gqrx.dk
+Tool for audio recording with a SDR, tested to work with Gqrx: http://gqrx.dk
 
 **SDRecord is able to reduce network traffic, disk space needed for records and record for X specified minutes and/or for X specified MBs of data.**
 
-SDRecord drops UDP packets coming from Gqrx that do not contain any data ( data payload is 0 ) and sends in output ( on stdout or to a file and/or to a remote host ) only packets containing info.
+SDRecord drops UDP packets coming from Gqrx that do not contain any data ( data payload is 0 ) and sends in output ( on stdout or to a file and/or to a remote host ) only packets containing information.
 
 Usage and Options
 -----------------
@@ -83,11 +83,7 @@ INFO: Listening /0.0.0.0 on port 7355
 345.9 KB / 50.00 MB transferred	 Press Ctrl+c to terminate
 ```
 
-License and Donations
+License
 -------
 
 Coded by Andrea Dari and licensed under GNU GPL v2.0
-
-Support me for updates and new projects: <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=andreadari91%40gmail%2ecom&lc=IT&item_name=Andrea%20Dari%20FOSS%20developer%20support&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="[paypal]" /></a>
-
-Thank you!
